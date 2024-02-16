@@ -1,19 +1,19 @@
 #<---------------------------------- MULTI NODE KUBERNETES SETUP BY - aamir - 2024 <---------------------------------->#
                         
 # Please Refer this link  :------->
-https://github.com/vimallinuxworld13
-https://github.com/vimallinuxworld13/Kubernetes_MultiNode_Cluster_using_Kubeadm/blob/master/common-setup-master-slave.sh
+# https://github.com/vimallinuxworld13
+# https://github.com/vimallinuxworld13/Kubernetes_MultiNode_Cluster_using_Kubeadm/blob/master/common-setup-master-slave.sh
 
 
-Agenda :- Kubernets setup using 'kubeadm' in AWS Ec2 RedHat Linux Server 
-###############################################################################
+# Agenda :- Kubernets setup using 'kubeadm' in AWS Ec2 RedHat Linux Server 
+################################################################################
    1 - Master  [ Control Plane ]   ==  ( 4 GB , 2 Core ) ....   T2.Medium
    2 - Worker  [  Worker Node  ]   ==  ( 1 GB , 1 Core ) ....   T2.Micro
-################################################################################
+#################################################################################
 
-=======================--
-S T A R T   S E T  UP:-
-=======================--
+#=======================--
+# S T A R T   S E T  UP :-
+#=======================--
 NOTE : - Go to AWS , Ceate [RedHat] ec2 Instance with [T2.Medium]
        - Go to Advance Option [user data] & Paste Below script and then Launch the instance. 
        
