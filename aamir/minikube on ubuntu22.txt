@@ -1,0 +1,39 @@
+AWS →ubuntu 20.08→t2 Medium machine→1 instance →SSH & All Traffic →launch→ copy pblic IP using putty for opninng linux terminal UBUNTU  ( single node architecture , no worker node require)
+
+sudo su - root
+hostnamectl set-hostname Minikube
+bash
+sudo apt-get update -y
+
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+kubectl version
+sudo apt-get install docker.io -y
+docker -v
+sudo systemctl status docker 
+sudo systemctl enable  docker
+sudo usermod -aG docker $USER && newgrp docker
+sudo su
+
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+
+chmod +x minikube
+sudo mv minikube /usr/local/bin/
+minikube version
+sudo apt-get install conntrack    (no use )
+minikube start --force --driver=docker  (minikube start) aftr start instance 1st run this comnd   
+
+minikube status 
+kubectl cluster-info
+kubectl get events
+kubectl get nodes
+kubectl config view
+kubectl delete node <node name>>
+minikube node add       
+kubectl describe node minikube
+
+
+## Creat Deployment :- 
+kubectl create deployment myweb1 --image=vimal13/apache-webserver-php
