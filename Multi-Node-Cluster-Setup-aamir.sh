@@ -119,13 +119,25 @@ $ kubectl get nodes
 --> NAME     STATUS   ROLES           AGE   VERSION
 --> master   Ready    control-plane   21m   v1.29.2
 
+$ kubectl describe node master | less
+
 
 
 ###### By default, apps won’t scheduled on the master node. If u want to use the Master node for scheduling apps, taint the master node :--->
+$ kubectl describe node master | grep Taints
+--> Taints:             node-role.kubernetes.io/control-plane:NoSchedule
+
+### For
 $ kubectl taint nodes --all node-role.kubernetes.io/control-plane-
 
 
 ###### Now Create our own deploymnet :--->
+##-> RUN COMMAND :--
+$ kubectl run mypod  --image=vimal13/apache-webserver-php --dry-run=client
+$ kubectl run mypod  --image=vimal13/apache-webserver-php --dry-run=client -o yaml
+$ kubectl run mypod  --image=vimal13/apache-webserver-php --dry-run=client -o yaml > mypod.yml
+
+##-> CREATE COMMAND :--
 $ kubectl create deployment mydep1 --image=vimal13/apache-webserver-php
 $ kubectl create deployment mydep1 --image=vimal13/apache-webserver-php --replicas=5
 $ kubectl expose deployment mydep1 --type=NodePort --port=80
@@ -162,9 +174,15 @@ $ kubectl describe  nodes worker1
 
 
 $ kubectl get nodes
+$ kubectl get nodes -o wide
 --> NAME      STATUS   ROLES           AGE   VERSION
 --> master    Ready    control-plane   56m   v1.29.2
 --> worker1   Ready    worker          5m    v1.29.2
+
+
+###### Check Taint on Worker Node :--->
+$ kubectl describe node worker1 | grep Taints
+--> Taints:             <none>
 
 
 ###### Now You verify all the cluster component health statuses :--->
