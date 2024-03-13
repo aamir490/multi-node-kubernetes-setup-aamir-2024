@@ -225,6 +225,7 @@ $ vi calico.yaml                    [ if Require ]
             - name: IP_AUTODETECTION_METHOD 
               value: "interface=eth0"
  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
              
 $ kubectl apply -f calico.yaml
 $ kubectl get pods  -n kube-system
@@ -248,6 +249,27 @@ $ cd /etc/kubernetes/
 admin.conf  controller-manager.conf  kubelet.conf  manifests  pki  scheduler.conf  super-admin.conf
 
 $ vi admin.conf 
+
+
+
+#### -------------------------------------------------------------------------------------------------------------
+#### For audit Kubernetes clusters :----
+:-- kubeaudit is a command line tool and a Go package to audit Kubernetes clusters for various different security concerns, such as:
+ - run as non-root
+ - use a read-only root filesystem
+ - drop scary capabilities, don't add new ones
+ - don't run privileged
+ - and more!
+
+Go To This Link :--   https://github.com/Shopify/kubeaudit/releases
+$ wget https://github.com/Shopify/kubeaudit/releases/download/v0.22.1/kubeaudit_0.22.1_linux_amd64.tar.gz
+$ tar -xvzf kubeaudit_0.22.1_linux_amd64.tar.gz
+$ sudo mv kubeaudit /usr/local/bin/
+$ kubeaudit all
+
+
+
+
 
 
 ###### If u want to handle k8s cluster to your host Windows maxhine :--->
